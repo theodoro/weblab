@@ -71,5 +71,25 @@ public class FabricanteDAO {
 		return fabricante;
 
 	}
+	
+	public void excluir(Fabricante fabricante) {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+			session.delete(fabricante);
+			transaction.commit();
+		} catch (RuntimeException ex) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+
+		} finally {
+			session.close();
+		}
+
+	}
 
 }
