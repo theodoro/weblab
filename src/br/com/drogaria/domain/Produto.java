@@ -10,10 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_produtos")
+@NamedQueries({
+		@NamedQuery(name = "Produto.Listar", query = "SELECT produto FROM Produto produto"),
+		@NamedQuery(name = "Produto.BuscarPorId", query = "SELECT produto FROM Produto produto WHERE id = :id") })
 public class Produto {
 
 	@Id
@@ -73,6 +78,13 @@ public class Produto {
 
 	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", descricao=" + descricao + ", preco="
+				+ preco + ", quantidade=" + quantidade + ", fabricante="
+				+ fabricante + "]";
 	}
 
 }

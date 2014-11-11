@@ -11,7 +11,6 @@ import br.com.drogaria.domain.Fabricante;
 public class FabricanteDAOTest {
 
 	@Test
-	@Ignore
 	public void salvar() {
 
 		Fabricante f1 = new Fabricante();
@@ -51,6 +50,7 @@ public class FabricanteDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void excluir(){
 		
 		FabricanteDAO dao = new FabricanteDAO();
